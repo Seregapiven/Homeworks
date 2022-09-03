@@ -1,8 +1,13 @@
 let operand;
+
 do {
   operand = prompt('Введите число: ');
 } while (isNumberInvalid(operand));
   operand = Number(operand);
+
+  alert('Сумма четных чисел: ' + sumEvenNumbers(operand));
+alert('Сумма нечетных чисел: ' + sumOddNumbers(operand));
+
 function isNumberInvalid(val) {
   return val === null || val <= 0 || val.trim() === '' || isNaN(val);
 }
@@ -20,8 +25,6 @@ function sumEvenNumbers(number) {
   }
   return sum;
 }
-alert('Сумма четных чисел: ' + sumEvenNumbers(operand));
-alert('Сумма нечетных чисел: ' + sumOddNumbers(operand));
 
 
 
