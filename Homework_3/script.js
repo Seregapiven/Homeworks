@@ -5,7 +5,7 @@ do {
 } while (isNumberInvalid(operand));
   operand = Number(operand);
 
-  alert('Сумма четных чисел: ' + sumEvenNumbers(operand));
+alert('Сумма четных чисел: ' + sumEvenNumbers(operand));
 alert('Сумма нечетных чисел: ' + sumOddNumbers(operand));
 
 function isNumberInvalid(val) {
