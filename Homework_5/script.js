@@ -1,6 +1,5 @@
-// 1) с помощью промта спрашиваем у пользователя что он хочет сделать (+ - / *). Спрашиваем до тех пор пока он введет допустимое значение
-let action = getAction('Выберите значение (+, -, * или /)');
-let str = getOperands('Введите операнды через запятую');
+const action = getAction('Выберите значение (+, -, * или /)');
+const str = getOperands('Введите операнды через запятую');
 let array;
 let result;
 
@@ -38,15 +37,8 @@ function getOperands(title) {
 }
 
 array = str.split(',');
- result = +array[0];
+result = +array[0];
 for (let i = 1; i < array.length; i++) {
   result = calculate(result, +array[i]);
 }
 alert(result);
-
-
-// 2) спрашиваем у пользователя операнды, он их вводит в одном промте через запятую. То что введет пользователь не должно быть пустой строкой или null.
-
-
-
-// 3) С помощью alert или console.log выводим результат действия (+ - / *) с операндами.
