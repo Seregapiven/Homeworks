@@ -1,7 +1,12 @@
-const action = getAction('Выберите значение (+, -, * или /)');
-const str = getOperands('Введите операнды через запятую');
 let array;
 let result;
+const action = getAction('Выберите значение (+, -, * или /)');
+const str = getOperands('Введите операнды через запятую');
+
+for (let i = 1; i < array.length; i++) {
+  result = calculate(result, +array[i]);
+}
+alert(result);
 
 function calculate(a, b) {
   switch (action) {
@@ -33,12 +38,8 @@ function getOperands(title) {
   do {
     str = prompt(title);
   } while (!isNumber(str));
-  return str;
+  array = str.split(',');
+  result = +array[0];
+  return result;
 }
 
-array = str.split(',');
-result = +array[0];
-for (let i = 1; i < array.length; i++) {
-  result = calculate(result, +array[i]);
-}
-alert(result);
