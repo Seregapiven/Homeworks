@@ -24,11 +24,15 @@ const students = [
 calculateStudentAverageMark(students[2]);
 calculateGroupAverageMark(students);
 
-function calculateStudentAverageMark(val) { 
-  return val.marks.reduce((acc, currentValue) => acc + currentValue) / val.marks.length; 
+function everageMarks(val) { 
+    return val.reduce((acc, currentValue) => acc + currentValue) / val.length;
 }
+
+function calculateStudentAverageMark(val) { 
+    return everageMarks(val.marks)
+}
+
 function calculateGroupAverageMark(val) {
-  const allMarks = val.reduce((acc, currentValue) => acc.concat(currentValue.marks), []);
-  const allAverageMarks = allMarks.reduce((acc, currentValue) => acc + currentValue) / allMarks.length;
-  return allAverageMarks;
+    const allMarks = val.reduce((acc, currentValue) => acc.concat(currentValue.marks), []);
+    return everageMarks(allMarks);
 }
