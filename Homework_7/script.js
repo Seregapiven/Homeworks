@@ -1,10 +1,10 @@
 function createCalculator(val) {
-    let counts = val;
+    let result = val;
     return {
-        add: (val) => counts += val,
-        mult: (val) => counts *= val,
-        sub: (val) => counts -= val,
-        div: (val) => counts /= val,
-        set: (val) => counts = val
+        add: (val) => result += val,
+        mult: (val) => result *= val,
+        sub: (val) => result -= val,
+        div: (val) => result /= val,
+        set: (val) => result = val
     }
 }
