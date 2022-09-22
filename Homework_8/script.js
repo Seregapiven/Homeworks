@@ -1,4 +1,3 @@
-
 const operand1 = document.querySelector('#operand1');
 const operand2 = document.querySelector('#operand2');
 const operation = document.querySelector('#operation');
@@ -9,12 +8,11 @@ btn.addEventListener('click', onBtnClick);
 
 function onBtnClick() {
     let result = 0;
-    result = calculate(+operand1.value, +operand2.value);
+    result = calculate(+operand1.value, +operand2.value, operation.value);
     solution.textContent = `Результат:${operand1.value}${operation.value}${operand2.value} = ${result}`;
 }
-function calculate(a, b) { 
-    
-    switch (operation.value) {
+function calculate(a, b, action) { 
+    switch (action) {
         case '+':
             return a + b;
         case '-':
