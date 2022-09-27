@@ -1,0 +1,12 @@
+.main {
+      background-color: gray;    
+}
+.invalid-input {
+  background-color: red
+}
+table {
+  margin: auto;
+}
+.delete-btn {
+  float: right;
+}
