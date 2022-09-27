@@ -29,6 +29,7 @@ function generateTaskEl(task) {
 
     trEl.append(createCell(task));
     trEl.append(createCell(''));
+    trEl.addEventListener("click", ()=>trEl.classList.toggle('dotodo'));
 
     return trEl;
 
@@ -37,7 +38,7 @@ function createCell(value) {
     const tdEl = document.createElement('td');
 
     tdEl.textContent = value;
-    tdEl.addEventListener("click", ()=>tdEl.classList.toggle('dotodo'));
+    
     return tdEl;
 
 }
