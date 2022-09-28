@@ -10,7 +10,10 @@
   <script src="script.js" defer></script>
 </head>
 
-<body class="main">
+<body class="main"> 
+    <div>
+        <h2>Список контактов</h2>
+    </div>
   <table>
     <thead>
       <tr>
@@ -22,7 +25,7 @@
     </thead>
     <tbody id="contactsList"></tbody>
     <tfoot>
-      <tr>
+      <tr id="valid">
         <td><input id="name" placeholder="Введите имя" /></td>
         <td><input id="surname" placeholder="Введите фамилию" /></td>
         <td><input id="phone" placeholder="Введите номер телефона" /></td>
@@ -30,6 +33,7 @@
       </tr>
     </tfoot>
   </table>
+  <div class="invalid-input" id="errorContainer"></div>
   <script type="text/template" id="contactItemTemplate">
     <tr>
       <td>{{name}}</td>

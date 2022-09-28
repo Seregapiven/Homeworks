@@ -5,23 +5,35 @@ const nameEl = document.querySelector('#name');
 const surnameEl = document.querySelector('#surname');
 const phoneEl = document.querySelector('#phone');
 const addBtnEl = document.querySelector('#addContactBtn');
+const errorContainerEl = document.querySelector('#errorContainer');
+const valid = document.querySelector('#valid');
+
 const taskITemTemplate = document.querySelector('#contactItemTemplate').innerHTML;
 
 addBtnEl.addEventListener('click', onAddContactBtnClick)
 contactsListEl.addEventListener('click', onListClick);
+valid.addEventListener('input', onValidInput);
 
 
 function onAddContactBtnClick(){
-
-    if (!validateValues()){
-        return;
-    }
+    if (!validateInput()) return;
 
     const newContact = getValues();
 
     addContact(newContact);
     resetForm();
     
+}
+
+function validateInput() {
+    const value = {
+        name: nameEl.value,
+        surname: surnameEl.value,
+        phone: phoneEl.value,
+    }
+    
+    return validateValue(value);
+
 }
 
 function getValues(){
@@ -62,29 +74,18 @@ function resetForm(){
     phoneEl.value = '';
 }
 
-function validateValues(){
-    resetValidation();
-    
-    if (nameEl.value === '') {
-        nameEl.classList.add('invalid-input');
-        return false
-    };
-
-    if (surnameEl.value === '') {
-        surnameEl.classList.add('invalid-input');
-        return false
-    };
-
-    if (phoneEl.value === '') {
-        phoneEl.classList.add('invalid-input');
-        return false
-    };
-
-    return true
+function onValidInput() {
+    validateInput();
 }
 
-function resetValidation(){
-    nameEl.classList.remove('invalid-input');
-    surnameEl.classList.remove('invalid-input');
-    phoneEl.classList.remove('invalid-input');
+function validateValue(value) {
+    if (value.name === "" || value.surname === "" || value.phone === ""  ) {
+        errorContainerEl.textContent = "Ошибка! Заполните все поля форм!";
+        addBtnEl.disabled = true;
+        return false;
+    } else {
+        errorContainerEl.textContent = '';
+        addBtnEl.disabled = false;
+        return true;
+    }
 }
