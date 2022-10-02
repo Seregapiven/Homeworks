@@ -89,7 +89,7 @@ function deleteTask(id) {
 }
 
 function getTaskId(elem) {
-    return +elem.dataset.contactId;
+    return +elem.dataset.taskId;
 }
 
 function onTaskNameInput() {
