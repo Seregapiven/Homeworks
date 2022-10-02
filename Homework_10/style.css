@@ -1,4 +1,26 @@
 .main {
+  background-color: gray;
+}
+
+.invalid-input {
+  text-align: center;
+  color: rgb(0, 255, 76);
+  text-align: center;
+
+}
+
+table {
+  margin: auto;
+}
+
+.delete-btn {
+  float: right;
+}
+
+div {
+  text-align: center;
+=======
+.main {
     background-color: gray;    
 }
 .invalid-input {
@@ -15,4 +37,3 @@ float: right;
 }
 div {
     text-align: center;
-}

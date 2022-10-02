@@ -10,6 +10,53 @@
   <script src="script.js" defer></script>
 </head>
 
+<body class="main">
+  <div>
+    <h2>Список контактов</h2>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Номер телефона</th>
+        <th>Действие</th>
+      </tr>
+    </thead>
+    <tbody id="contactsList"></tbody>
+    <tfoot>
+      <tr id="valid">
+        <td><input id="name" placeholder="Введите имя" /></td>
+        <td><input id="surname" placeholder="Введите фамилию" /></td>
+        <td><input id="phone" placeholder="Введите номер телефона" /></td>
+        <td><button id="addContactBtn">Добавить контакт</button></td>
+      </tr>
+    </tfoot>
+  </table>
+  <div class="invalid-input" id="errorContainer"></div>
+  <script type="text/template" id="contactItemTemplate">
+    <tr>
+      <td>{{name}}</td>
+      <td>{{surname}}</td>
+      <td>{{phone}}</td>
+     <td><button class="delete-btn">Удалить данные</button></td>
+    </tr>
+  </script>
+</body>
+
+=======
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Homework10</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+
 <body class="main"> 
     <div>
         <h2>Список контактов</h2>
