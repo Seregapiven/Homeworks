@@ -67,19 +67,12 @@ function getTodoHtml({ id, title, condition }) {
 function saveTask(task) {
     if (!task.id) {
         addTask(task);
-    } else {
-        updateTask(task);
     }
 }
 
 function addTask(task) {
     task.id = Date.now();
     list.push(task);
-    renderTaskList(list);
-}
-
-function updateTask(task) {
-    list = list.map((item) => (item.id !== task.id ? item : task));
     renderTaskList(list);
 }
 
