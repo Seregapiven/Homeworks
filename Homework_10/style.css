@@ -1,12 +1,22 @@
 .main {
-      background-color: gray;    
+  background-color: gray;
 }
+
 .invalid-input {
-  background-color: red
+  text-align: center;
+  color: rgb(0, 255, 76);
+  text-align: center;
+
 }
+
 table {
   margin: auto;
 }
+
 .delete-btn {
   float: right;
+}
+
+div {
+  text-align: center;
 }
