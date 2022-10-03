@@ -1,0 +1,35 @@
+
+.task-list {
+    margin-bottom: 20px;
+}
+.main {
+    background-color: gray;
+    text-align: center;
+}
+.task-item {
+    color: #555;
+    border: 1px solid #bbb;
+    cursor: pointer;
+    padding: 10px 20px;
+    margin: 5px 0;
+    font-size: 20px;
+    background-color: rgb(255, 224, 224);
+}
+
+.task-done {
+    color: #555;
+    border: 1px solid #bbb;
+    cursor: pointer;
+    padding: 10px 20px;
+    margin: 5px 0;
+    font-size: 20px;
+    text-decoration: line-through;
+    background-color: rgb(144, 203, 238);
+}
+.delete-btn {
+    float: right;
+}
+
+#todoItemTemplate {
+    display: none;
+}
