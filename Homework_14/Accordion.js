@@ -16,7 +16,7 @@ class Accordion {
       const index = this.#findTitleIndex(e.target);
 
       this.#body[index].classList.toggle("active");
-      this.#hideAll(index);
+      this.#hide(index);
       }
     });
   }
@@ -24,13 +24,13 @@ class Accordion {
   #findTitleIndex(val) {
     for (let i = 0; i < this.#title.length; i++) {
     if (this.#title[i] === val) {
-    return i;
+      return i;
     }
-    }
+  }
     return null;
   }
         
-  #hideAll(index) {
+  #hide(index) {
     for (let i = 0; i < this.#body.length; i++) {
       if (this.#body[i] !== this.#body[index]) {
         this.#body[i].classList.remove('active')
