@@ -33,7 +33,7 @@ class Accordion {
   #hide(index) {
     for (let i = 0; i < this.#body.length; i++) {
       if (this.#body[i] !== this.#body[index]) {
-        this.#body[i].classList.remove('active')
+      this.#body[i].classList.remove('active')
       }
     }
   }
