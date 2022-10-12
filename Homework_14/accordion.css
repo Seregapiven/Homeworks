@@ -1,0 +1,25 @@
+.accordion-body {
+    display: none;
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .accordion-title {
+    background-color: gray;
+    color: #fff;
+    cursor: pointer;
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .active {
+    background-color: azure;
+    display: block;
+  }
+  
+  .accordion-title:hover {
+    background-color: rgb(172, 171, 171);
+  
+  }
