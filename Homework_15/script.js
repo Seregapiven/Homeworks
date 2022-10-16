@@ -1,7 +1,7 @@
 const TASK_ITEM_CLASS = 'task-item';
 const TASK_DONE_CLASS = 'task-done';
 const DELETE_BTN_CLASS = 'delete-btn';
-const ON = 'on';
+const ON = true;
 
 const idEl = document.querySelector('#id');
 const taskListEl = document.querySelector('#taskList');
@@ -53,12 +53,8 @@ function fetchContacts() {
         .then((res) => res.json())
         .then((data) => {
             list = data;
-            list.forEach(checkClass);
             renderTaskList(list);
         });
-}
-function checkClass(task) {
-    task.completed ? task.completed = TASK_DONE_CLASS : task.completed = TASK_ITEM_CLASS;
 }
 
 function renderTaskList(list) {
@@ -75,7 +71,7 @@ function getTodoHtml({ id, title, completed }) {
     return taskITemTemplate
     .replaceAll('{{id}}', id)
     .replaceAll('{{title}}', title)
-    .replaceAll('{{completed}}', completed);
+    .replaceAll('{{completed}}', completed ? TASK_DONE_CLASS : TASK_ITEM_CLASS);
 }
 
 function saveTask(task) {
@@ -136,11 +132,11 @@ function validateValue(value) {
 }
 
 function changeCondition(id,condition){
-    const task = list.find((item) => item.id === id);
+    const taskOnOFF = list.find((item) => item.id === id);
     if (condition === ON) {
-        task.completed = TASK_DONE_CLASS;
+        taskOnOFF.completed = true;
     } else {
-        task.completed = TASK_ITEM_CLASS;
+        taskOnOFF.completed = false;
     }
     renderTaskList(list);
 }
