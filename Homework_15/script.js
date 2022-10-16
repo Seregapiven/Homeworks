@@ -135,9 +135,9 @@ function validateValue(value) {
     }
 }
 
-function changeCondition(id,completed){
+function changeCondition(id,condition){
     const task = list.find((item) => item.id === id);
-    if (completed === ON) {
+    if (condition === ON) {
         task.completed = TASK_DONE_CLASS;
     } else {
         task.completed = TASK_ITEM_CLASS;
