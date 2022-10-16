@@ -8,7 +8,6 @@ const taskListEl = document.querySelector('#taskList');
 const taskNameInput = document.querySelector('#taskNameInput');
 const newTaskForm = document.querySelector('#newTaskForm');
 const errorContainerEl = document.querySelector('#errorContainer');
-
 const taskITemTemplate = document.querySelector('#todoItemTemplate').innerHTML;
 
 newTaskForm.addEventListener('submit', onNewTaskSubmit);

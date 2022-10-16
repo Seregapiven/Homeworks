@@ -6,6 +6,7 @@
     background-color: gray;
     text-align: center;
 }
+
 .task-item {
     color: #555;
     border: 1px solid #bbb;
@@ -33,3 +34,4 @@
 #todoItemTemplate {
     display: none;
 }
+
