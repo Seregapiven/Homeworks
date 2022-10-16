@@ -2,6 +2,7 @@ const TASK_ITEM_CLASS = 'task-item';
 const TASK_DONE_CLASS = 'task-done';
 const DELETE_BTN_CLASS = 'delete-btn';
 const ON = true;
+const API_URL = 'https://jsonplaceholder.typicode.com/todos?_limit=10';
 
 const idEl = document.querySelector('#id');
 const taskListEl = document.querySelector('#taskList');
@@ -49,7 +50,7 @@ function init() {
 }
 
 function fetchContacts() {
-    fetch('https://jsonplaceholder.typicode.com/todos?_limit=10')
+    fetch(API_URL)
         .then((res) => res.json())
         .then((data) => {
             list = data;
@@ -71,7 +72,7 @@ function getTodoHtml({ id, title, completed }) {
     return taskITemTemplate
     .replaceAll('{{id}}', id)
     .replaceAll('{{title}}', title)
-    .replaceAll('{{completed}}', completed ? TASK_DONE_CLASS : TASK_ITEM_CLASS);
+    .replaceAll('{{completed}}', completed ? TASK_ITEM_CLASS : TASK_DONE_CLASS);
 }
 
 function saveTask(task) {
@@ -134,9 +135,9 @@ function validateValue(value) {
 function changeCondition(id,condition){
     const taskOnOFF = list.find((item) => item.id === id);
     if (condition === ON) {
-        taskOnOFF.completed = true;
-    } else {
         taskOnOFF.completed = false;
+    } else {
+        taskOnOFF.completed = true;
     }
     renderTaskList(list);
 }
