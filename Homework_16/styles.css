@@ -1,0 +1,23 @@
+body {
+    background-color: grey;
+}
+.head {
+    font-size: 30px;
+}
+.container {    
+    border-radius: 1pc;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    color: white ;
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+.delete-btn {
+    color: red;
+    cursor: pointer;
+}
+.edit-btn, .add-btn {
+    cursor: pointer;
+}
