@@ -1,3 +1,16 @@
-let age = prompt('Якого Ви року народження?');
-    let year = 2022;
-alert(`Вам ${year-age} років!`); 
+// function barTriang(p1, p2, p3){
+//   let x = (p1[0] + p2[0] + p3[0])/3;
+//   let y = (p1[1] + p2[1] + p3[1])/3;
+//   x = x.toFixed(4) +'';
+//   y = y.toFixed(4) +''
+//   return [x,y];
+// }
+// function barTriang(p1, p2, p3){
+//   let x = (p1[0] + p2[0] + p3[0])/3;
+//   let y = (p1[1] + p2[1] + p3[1])/3;
+//   return [+x.toFixed(4),+y.toFixed(4)];
+// }
+function shortcut (string) {
+  return string.replace(/[^BCDFGHJKLMNPQRSTVWXYZ]/g,"");
+}
+
