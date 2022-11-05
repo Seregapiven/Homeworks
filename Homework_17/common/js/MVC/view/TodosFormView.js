@@ -2,20 +2,21 @@ class TodosFormView {
     el=null;
     #config = null;
     taskNameInput = document.querySelector('#taskNameInput');
-    static formTemplate=`<form id="newTaskForm">
-    <div class="row">
-        <div class="ten columns">
-            <input
-                type="text"
-                id="taskNameInput"
-                class="u-full-width"
-            />  
-        </div>
-        <div class="two columns">
-            <input type="submit" id="submitBtn" value="Add" />
-        </div>
-    </div>
-</form>`;
+    static formTemplate =
+                        `<form id="newTaskForm">
+                        <div class="row">
+                            <div class="ten columns">
+                                <input
+                                    type="text"
+                                    id="taskNameInput"
+                                    class="u-full-width"
+                                />  
+                            </div>
+                            <div class="two columns">
+                                <input type="submit" id="submitBtn" value="Add" />
+                            </div>
+                        </div>
+                        </form>`;
     static getFormValues() {
         return {
             title: taskNameInput.value,
