@@ -8,7 +8,6 @@ class TodosController {
         this.#listView = new TodosListView({
             onToggle: (id) => this.toggleTodo(id),
             onDelete: (id) => this.deleteTodo(id),
-            
         });
         container.append(this.#listView.el);
 
@@ -26,7 +25,6 @@ class TodosController {
             this.#listView.renderList(this.#collection.list);
         });
     }
-
     deleteTodo(id) {
         this.#collection.deleteTodo(id).then(() => {
             this.#listView.renderList(this.#collection.list);
