@@ -1,7 +1,7 @@
 class TodosFormView {
     el=null;
     #config = null;
-    taskNameInput = document.querySelector('#taskNameInput');
+    taskNameInput = null;
     static formTemplate =
                         `<form id="newTaskForm">
                         <div class="row">
@@ -17,28 +17,31 @@ class TodosFormView {
                             </div>
                         </div>
                         </form>`;
-    static getFormValues() {
-        return {
-            title: taskNameInput.value,
-        };
-    }
-    static resetForm() {
-        taskNameInput.value = '';
-    }
+    
     constructor(config){
         this.init();
         this.#config = config;
     }
-    
     init(){
         this.el = document.createElement('div');
         this.el.innerHTML=TodosFormView.formTemplate;
         this.el.addEventListener('submit', (e) => {
             e.preventDefault();
-            const newTask = TodosFormView.getFormValues();
+            this.taskNameInput = document.querySelector('#taskNameInput');
+            const newTask = this.getFormValues();
             newTask.completed = false;
             this.#config.onSave(newTask)
-            TodosFormView.resetForm();
+            this.resetForm();
         });
+    }
+
+    getFormValues() {
+        return {
+            title: this.taskNameInput.value,
+        };
+    }
+
+    resetForm() {
+        this.taskNameInput.value = '';
     }
 }
