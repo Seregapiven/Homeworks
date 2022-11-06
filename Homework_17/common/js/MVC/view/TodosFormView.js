@@ -1,47 +1,49 @@
 class TodosFormView {
     el=null;
     #config = null;
-    taskNameInput = null;
     static formTemplate =
-                        `<form id="newTaskForm">
+                        `<form>
                         <div class="row">
                             <div class="ten columns">
                                 <input
                                     type="text"
-                                    id="taskNameInput"
+                                    name = "title"
                                     class="u-full-width"
                                 />  
                             </div>
                             <div class="two columns">
-                                <input type="submit" id="submitBtn" value="Add" />
+                                <input type="submit" value="Add" />
                             </div>
                         </div>
                         </form>`;
     
-    constructor(config){
-        this.init();
+    constructor(config) {
         this.#config = config;
+        this.init();
     }
     init(){
-        this.el = document.createElement('div');
-        this.el.innerHTML=TodosFormView.formTemplate;
+        this.el = htmlEl(TodosFormView.formTemplate);
         this.el.addEventListener('submit', (e) => {
             e.preventDefault();
-            this.taskNameInput = document.querySelector('#taskNameInput');
-            const newTask = this.getFormValues();
+            const newTask = this.#getFormValues();
             newTask.completed = false;
             this.#config.onSave(newTask)
             this.resetForm();
         });
     }
 
-    getFormValues() {
+    #getFormValues() {
         return {
-            title: this.taskNameInput.value,
+            title: this.el.elements.title.value,
         };
     }
 
     resetForm() {
-        this.taskNameInput.value = '';
+        this.el.elements.title.value = '';
     }
+}
+function htmlEl(html) {
+    const container = document.createElement('div');
+    container.innerHTML = html;
+    return container.children[0];
 }
