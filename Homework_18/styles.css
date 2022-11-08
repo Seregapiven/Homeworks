@@ -1,0 +1,37 @@
+.sticker-item {
+    width: 150px;
+    height: 100px;
+    float: left;
+    color: black;
+    border: 5px solid #bbb;
+    border-radius: 10%;
+    cursor: pointer;
+    padding: 10px 10px;
+    margin: 5px 0;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: gray;
+    position: relative;
+    right: 100px;
+    
+}
+.area-item {
+    background-color: grey;
+}
+
+.add-btn {
+    float: right;
+    color: black;
+
+    
+        
+}
+.btn-item{
+    position: absolute;
+        right: 5px;
+        top: 5px;
+}
+
+textarea {
+    resize : none;
+}
