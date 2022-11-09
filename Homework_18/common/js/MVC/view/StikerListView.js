@@ -7,14 +7,12 @@ class StickerListView {
         DELETE_BTN_CLASS: 'add-btn',
     };
 
-    static listTemplate = `
-        <div></div>
-    `;
-
     static stickerTemplate = `
-             <div class="sticker-item" data-todo-id="{{id}}">
+            <div> 
+            <div class="sticker-item" data-todo-id="{{id}}">
                 <span class="add-btn">[x]</span>
                 <textarea class="area-item"  cols="12"> {{description}} </textarea>
+            </div>
             </div>
     `;
 
@@ -37,7 +35,7 @@ class StickerListView {
     }
 
     #initView() {
-        this.$el = $(StickerListView.listTemplate);
+        this.$el = $(StickerListView.stickerTemplate);
         this.$el.on('click', (e) => {
             const todoId = StickerListView.getStickerId(e.target);
           
