@@ -19,8 +19,5 @@ class ButtomView {
             e.preventDefault();
             this.#config.onSave();
         });
-        this.$el.on('change',(e)=>{
-            this.#config.onUpdate();
-        })
     }
 }
