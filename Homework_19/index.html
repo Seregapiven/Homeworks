@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Picture gallery</title>
+    <link rel="stylesheet" href="assets/css/lightgallery.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+    <script src="assets/js/lightgallery.min.js"></script>
+    <script src="assets/js/script.js" defer></script>
+  </head>
+  <body>
+    <h1>Picture gallery</h1>
+        <div class="element-1" id="id"></div>
+        <script type="text/template" id="template">
+          <a href="{{url}}">
+            <img src="{{thumbnailUrl}}" alt="{{title}}">
+          </a>
+        </script>
+  </body>
+</html>
