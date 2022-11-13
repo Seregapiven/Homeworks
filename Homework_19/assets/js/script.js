@@ -2,13 +2,14 @@ let list = [];
 const template = document.querySelector('#template').innerHTML;
 const imgEl = document.querySelector('#id');
 fetchFotoList();
-async function fetchFotoList() {
-    const res = await fetch('https://jsonplaceholder.typicode.com/photos?_limit=10');
-    const data = await res.json();
-    list = data;
-    renderFotoList(list);
-    $('.element-1').lightGallery({
-    });
+function fetchFotoList() {
+    return fetch('https://jsonplaceholder.typicode.com/photos?_limit=10')
+        .then((res) => res.json())
+        .then((data) => {
+            list = data
+            renderFotoList(list);
+            $('.element-1').lightGallery({});
+        });
     }
 function renderFotoList(list) {
     imgEl.innerHTML = '';
