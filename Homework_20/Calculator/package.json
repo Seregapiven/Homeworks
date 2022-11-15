@@ -1,0 +1,11 @@
+{
+  "name": "homework_20",
+  "version": "0.0.1",
+  "description": "This program performs the functions of a calculator (addition, subtraction, multiplication, division)",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sergey Piven",
+  "license": "MIT"
+}

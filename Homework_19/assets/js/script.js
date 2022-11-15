@@ -8,12 +8,13 @@ function fetchFotoList() {
         .then((data) => {
             list = data
             renderFotoList(list);
-            $('.element-1').lightGallery();
+            // $('.element-1').lightGallery();
         });
     }
 function renderFotoList(list) {
     imgEl.innerHTML = '';
     list.forEach(renderFoto);
+    $('.element-1').lightGallery();
 }
 function renderFoto(item) {
     const foto = getFoto(item);
