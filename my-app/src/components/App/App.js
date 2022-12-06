@@ -16,12 +16,6 @@ class App extends Component {
     });
   };
 
-  onChangeAction = (e) => {
-    this.setState({
-      action: e.target.value,
-    });
-  };
-
   onInputChange2 = (e) => {
     this.setState({
       operand2: e.target.value,
