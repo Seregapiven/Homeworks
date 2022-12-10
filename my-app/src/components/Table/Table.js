@@ -1,3 +1,4 @@
+import './Table.css';
 import React, { Component } from 'react'
 import Tbody from './Body/Tbody'
 import Thead from './Head/Thead'

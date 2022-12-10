@@ -34,7 +34,7 @@ class App extends Component {
     return (
       <div className='main'>
         <Table contacts={this.state.contacts}
-               onDelete={this.deleteContact} />
+          onDelete={this.deleteContact} />
         <Form onSave={this.createContact} />
       </div>
     );

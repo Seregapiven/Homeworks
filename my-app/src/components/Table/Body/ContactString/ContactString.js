@@ -10,9 +10,9 @@ export class ContactString extends Component {
   render() {
     return (
       <tr>
-        <td className='td'>{this.props.cell.name}</td>
-        <td className='td'>{this.props.cell.surname}</td>
-        <td className='td'>{this.props.cell.email}</td>
+        <td>{this.props.cell.name}</td>
+        <td>{this.props.cell.surname}</td>
+        <td>{this.props.cell.email}</td>
         <td><button className='Btn' onClick={this.onDeleteClick}>Delete</button></td>
      </tr>
     )

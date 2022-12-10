@@ -1,13 +1,15 @@
 .main {
-margin-left: auto;
+  margin-left: auto;
   margin-right: auto;
-  width: 20em
+  width: 20em;
+  font-weight: bold;
+  font-size: 16px;
+
 }
 
 .Btn {
   cursor: pointer;
 }
 .table{
-  border: 3px solid grey;
-    border-collapse: collapse;
+  border: 5px solid grey;
 }
