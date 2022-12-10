@@ -20,8 +20,6 @@ class App extends Component {
   })
   }
   
-
-
   createContact = (newContact) => {
     this.setState({
       contacts: [...this.state.contacts,
@@ -33,15 +31,15 @@ class App extends Component {
   }
   render() {
     return (
-      <>
-        <table>
+      <div className='main'>
+        <table className='table' >
             <Thead/>
             <Tbody
             contacts={this.state.contacts}
             onDelete={this.deleteContact} />
         </table>
         <Form onSave={this.createContact} />
-      </>
+      </div>
     );
   }
  }

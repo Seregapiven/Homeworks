@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import './Form.css';
 export class Form extends Component {
     onFormSubmit = (e) => {
     e.preventDefault();
@@ -13,12 +13,11 @@ export class Form extends Component {
   }
   render() {
     return (
-       <form onSubmit={this.onFormSubmit}>
-          <input type="text" id="name" name="newName" placeholder="Contact name" />
-          <input type="text" id="surname" name="newSurName" placeholder="Contact surname" />
-          <input type="text" id="email" name="email" placeholder="Contact email" />
-          <button>Save</button>
-
+       <form className='form' onSubmit={this.onFormSubmit}>
+          <input className='input' type="text" name="newName" placeholder="Contact name" />
+          <input className='input' type="text" name="newSurName" placeholder="Contact surname" />
+          <input className='input' type="email" name="email" placeholder="Contact email" />
+          <button className='Btn'>Save</button>
         </form>
     )
   }

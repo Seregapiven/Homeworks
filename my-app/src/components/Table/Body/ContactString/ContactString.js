@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import './ContactString.css'
 export class ContactString extends Component {
 
   onDeleteClick = (e) => {
@@ -10,10 +10,10 @@ export class ContactString extends Component {
   render() {
     return (
       <tr>
-        <td>{this.props.cell.name}</td>
-        <td>{this.props.cell.surname}</td>
-        <td>{this.props.cell.email}</td>
-        <td><button onClick={this.onDeleteClick}>Del</button></td>
+        <td className='td'>{this.props.cell.name}</td>
+        <td className='td'>{this.props.cell.surname}</td>
+        <td className='td'>{this.props.cell.email}</td>
+        <td><button className='Btn' onClick={this.onDeleteClick}>Delete</button></td>
      </tr>
     )
   }
