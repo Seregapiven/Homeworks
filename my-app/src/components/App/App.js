@@ -1,42 +1,47 @@
 import './App.css';
 
 import React, { Component } from 'react';
+import Thead from '../Table/Head/Thead';
+import Tbody from '../Table/Body/Tbody';
+import Form from '../Form/Form';
 
 class App extends Component {
   state = {
-    operand1: "",
-    operand2: "",
-    action: "+",
-    result: "",
+    contacts: [
+      { id: 1, name: "Stiv", surname: "Bark", email: "stivbark@gmail.com" },
+      { id: 2, name: "Alex", surname: "Black", email: "alex@gmail.com" },
+      { id: 3, name: "Nik", surname: "Fisher", email: "fisher@gmail.com" },
+      { id: 4, name: "Kevin", surname: "Clark", email: "kevin@gmail.com"},
+    ],
   }
-
-  onInputChange1 = (e) => {
+  deleteContact = (id) => {
     this.setState({
-      operand1: e.target.value,
-    });
-  };
+      contacts: this.state.contacts.filter((item) => item.id !== id),
+  })
+  }
+  
 
-  onInputChange2 = (e) => {
+
+  createContact = (newContact) => {
     this.setState({
-      operand2: e.target.value,
-    });
-  };
-
-  onCalculate = () => {
-    return this.setState({
-      result: Number(this.state.operand1) + Number(this.state.operand2),
+      contacts: [...this.state.contacts,
+        {
+          ...newContact,
+          id: Date.now(),
+      }]
     })
   }
-
   render() {
     return (
-      <div>
-        <input value={this.state.operand1} onChange={this.onInputChange1} />
-        <h1>{this.state.action}</h1>
-        <input value={this.state.operand2} onChange={this.onInputChange2} />
-        <button onClick={this.onCalculate}>Calculate</button>
-        <div>{this.state.result}</div>
-      </div>
+      <>
+        <table>
+            <Thead/>
+            <Tbody
+            contacts={this.state.contacts}
+            onDelete={this.deleteContact} />
+        </table>
+        <Form onSave={this.createContact} />
+      </>
     );
   }
  }
