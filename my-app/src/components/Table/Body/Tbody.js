@@ -3,7 +3,7 @@ import ContactString from './ContactString/ContactString'
 export class Tbody extends Component {
   render() {
     return (
-      <tbody id="contactsList">
+      <tbody>
         {this.props.contacts.map((item) => (
           <ContactString
             key={item.id}

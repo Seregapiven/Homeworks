@@ -1,9 +1,9 @@
 import './App.css';
 
 import React, { Component } from 'react';
-import Thead from '../Table/Head/Thead';
-import Tbody from '../Table/Body/Tbody';
+
 import Form from '../Form/Form';
+import Table from '../Table/Table';
 
 class App extends Component {
   state = {
@@ -29,15 +29,12 @@ class App extends Component {
       }]
     })
   }
+  
   render() {
     return (
       <div className='main'>
-        <table className='table' >
-            <Thead/>
-            <Tbody
-            contacts={this.state.contacts}
-            onDelete={this.deleteContact} />
-        </table>
+        <Table contacts={this.state.contacts}
+               onDelete={this.deleteContact} />
         <Form onSave={this.createContact} />
       </div>
     );
