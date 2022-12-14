@@ -1,0 +1,7 @@
+.item.done {
+  text-decoration: line-through;
+}
+.btn {
+  cursor: pointer;
+  margin-left: 20px;
+}
