@@ -4,10 +4,9 @@
 .item.done {
   text-decoration: line-through;
   color: grey;
-  cursor: pointer
+  cursor: pointer;
 }
 .btn {
   cursor: pointer;
   margin-left: 10px;
-
 }
