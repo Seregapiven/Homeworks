@@ -35,7 +35,13 @@ export default class Form extends Component {
 
         this.props.onSave(this.state.values);
 
-        e.target.reset();
+        this.setState({
+            values: {
+            title: '',
+        },
+        })
+
+        // e.target.reset();
     };
 
     validate({title}) {
