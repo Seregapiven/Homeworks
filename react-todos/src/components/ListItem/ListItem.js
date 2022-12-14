@@ -19,7 +19,7 @@ export class ListItem extends Component {
                 onClick={this.onItemClick}
             >
                 {this.props.todo.title}
-                <button className='btn' onClick={this.onDeleteClick}>Delete</button>
+                <button className='btn' onClick={this.onDeleteClick}>Delete</button> 
             </li>
         );
     }

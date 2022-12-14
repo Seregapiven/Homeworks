@@ -10,6 +10,16 @@ export function deleteTodo(id) {
   }).then((res) => res.json());
 }
 
+export function updateTodo(todo) {
+    return fetch(TODO_URL + todo.id, {
+        method: 'PUT',
+        body: JSON.stringify(todo),
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    }).then((res) => res.json());
+}
+
 export function createTodo(newTodo) {
   return fetch(TODO_URL, {
     method: 'POST',

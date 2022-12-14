@@ -3,23 +3,22 @@ import './App.css';
 import { Component } from 'react';
 import Form from '../Form/Form';
 import List from '../List/List';
-import { createTodo, deleteTodo, getTodo } from '../../services/usersService';
+import { createTodo, deleteTodo, getTodo, updateTodo } from '../../services/usersService';
 
 class App extends Component {
     state = {
         todos: [],
     };
 
+
     toggleTodo = (id) => {
-        this.setState({
-            todos: this.state.todos.map((item) =>
-                item.id !== id
-                    ? item
-                    : {
-                        ...item,
-                        isDone: !item.isDone,
-                    }
-            ),
+        const todo = this.state.todos.find((item) => item.id === id);
+        updateTodo({ ...todo, isDone: !todo.isDone }).then((data) => {
+            this.setState({
+                todos: this.state.todos.map((item) =>
+                    item.id !== id ? item : data
+                ),
+            });
         });
     };
 

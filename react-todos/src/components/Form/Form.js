@@ -32,7 +32,9 @@ export default class Form extends Component {
 
     onFormSubmit = (e) => {
         e.preventDefault(e);
+
         this.props.onSave(this.state.values);
+
         e.target.reset();
     };
 
@@ -53,7 +55,7 @@ export default class Form extends Component {
                     onChange={this.onInputChange}
                 />
                 <button disabled={!this.state.isValid}>Save</button>
-                 {this.state.isDirty.title && this.state.errors.title ? (
+                {this.state.isDirty.title && this.state.errors.title ? (
                     <div className='error'>
                         {this.state.errors.title}
                     </div>

@@ -1,7 +1,9 @@
 .item.done {
   text-decoration: line-through;
+  color: grey
 }
 .btn {
   cursor: pointer;
-  margin-left: 20px;
+  margin-left: 10px;
+
 }
