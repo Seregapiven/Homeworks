@@ -1,5 +1,9 @@
 .item{
-  cursor: pointer;
+    cursor: pointer;
+    display: flex;
+    margin: 0 -2rem 15px;
+    justify-content: space-between;
+
 }
 .item.done {
   text-decoration: line-through;
