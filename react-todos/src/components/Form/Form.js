@@ -33,7 +33,7 @@ export default class Form extends Component {
     onFormSubmit = (e) => {
         e.preventDefault(e);
         this.props.onSave(this.state.values);
-        // e.target.reset();
+        e.target.reset();
     };
 
     validate({title}) {
