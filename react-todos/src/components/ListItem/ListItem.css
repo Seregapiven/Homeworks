@@ -1,6 +1,10 @@
+.item{
+  cursor: pointer;
+}
 .item.done {
   text-decoration: line-through;
-  color: grey
+  color: grey;
+  cursor: pointer
 }
 .btn {
   cursor: pointer;
