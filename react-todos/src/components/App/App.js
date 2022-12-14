@@ -3,7 +3,7 @@ import './App.css';
 import { Component } from 'react';
 import Form from '../Form/Form';
 import List from '../List/List';
-import { createTodo, deleteTodo, getTodo, updateTodo } from '../../services/usersService';
+import { createTodo, deleteTodo, getTodo, updateTodo } from '../../services/todoService';
 
 class App extends Component {
     state = {
