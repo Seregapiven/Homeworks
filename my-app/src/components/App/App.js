@@ -19,6 +19,9 @@ class App extends Component {
       contacts: this.state.contacts.filter((item) => item.id !== id),
   })
   }
+
+
+  
   
   createContact = (newContact) => {
     this.setState({

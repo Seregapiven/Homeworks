@@ -3,9 +3,12 @@ import './ContactString.css'
 export class ContactString extends Component {
 
   onDeleteClick = (e) => {
-
+    e.stopPropagation();
     this.props.onDelete(this.props.cell.id);
   };
+
+
+
 
   render() {
     return (
