@@ -1,0 +1,4 @@
+.pictures {
+  display: flex;
+  flex-wrap: wrap;
+}

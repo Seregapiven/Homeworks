@@ -1,0 +1,6 @@
+.album{
+  width: 500px;
+  float: left;
+  background-color: aqua;
+  cursor: pointer;;
+}
