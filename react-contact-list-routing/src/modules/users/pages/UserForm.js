@@ -13,12 +13,12 @@ function UserForm() {
   const { id } = useParams();
   const navigate = useNavigate();
   const {user, changeUser, saveUser } = useUser(id);
-  const [isDirty, setIsDirty]=useState({
+  const [isDirty, setIsDirty] = useState({
     name:false,
     surname:false,
     email:false,
   });
-  const[errors, SetErrors]=useState({})
+  const[errors, SetErrors] = useState({})
 
   useEffect(() => {
     SetErrors(validate(user))
