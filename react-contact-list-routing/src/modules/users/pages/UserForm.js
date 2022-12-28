@@ -67,32 +67,32 @@ function isValid(){
       <TextField
         error={!!errors.name}
         helperText={errors.name}
-      name="name"
-      label="Name"
-      variant="outlined"
-      fullWidth
-      value={user.name}
-      onChange={onInputChange} />
+        name="name"
+        label="Name"
+        variant="outlined"
+        fullWidth
+        value={user.name}
+        onChange={onInputChange} />
       <TextField
         error={!!errors.surname}
         helperText={errors.surname}
-      sx={{ marginTop: '8px' }}
-      name="surname"
-      label="Surname"
-      variant="outlined"
-      fullWidth
-      value={user.surname}
-      onChange={onInputChange} />
+        sx={{ marginTop: '8px' }}
+        name="surname"
+        label="Surname"
+        variant="outlined"
+        fullWidth
+        value={user.surname}
+        onChange={onInputChange} />
       <TextField
         error={!!errors.email}
         helperText={errors.email}
-      sx={{ marginTop: '8px' }}
-      name="email"
-      label="Email"
-      variant="outlined"
-      fullWidth
-      value={user.email}
-      onChange={onInputChange} />
+        sx={{ marginTop: '8px' }}
+        name="email"
+        label="Email"
+        variant="outlined"
+        fullWidth
+        value={user.email}
+        onChange={onInputChange} />
     <Button
       disabled={!isValid()}
       sx={{ marginTop: '8px' }}
