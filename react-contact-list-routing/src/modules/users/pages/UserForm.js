@@ -35,21 +35,21 @@ function UserForm() {
       [e.target.name]: true,});
   }
 
-function validate(target){
-const newErrors={}
-  if (target.name === '') {
-    newErrors.name = 'Name is required';
+function validate(values){
+const erors={}
+  if (values.name === '') {
+    erors.name = 'Name is required';
   }
-  if (target.surname === '') {
-    newErrors.surname = 'Surname is required';
+  if (values.surname === '') {
+    erors.surname = 'Surname is required';
   }
-  if (target.email === '') {
-    newErrors.email = 'Email is required';
+  if (values.email === '') {
+    erors.email = 'Email is required';
   }
-  if (!EMAIL_REGEXP.test(target.email)) {
-    newErrors.email = 'Email is Invalid';
+  if (!EMAIL_REGEXP.test(values.email)) {
+    erors.email = 'Email is Invalid';
   }
-  return newErrors;
+  return erors;
 }
 
 function isValid(){
