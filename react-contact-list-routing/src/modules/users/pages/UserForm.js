@@ -13,24 +13,24 @@ function UserForm() {
   const { id } = useParams();
   const navigate = useNavigate();
   const {user, changeUser, saveUser } = useUser(id);
-  const [isDirty,setIsDirty]=useState({
+  const [isDirty, setIsDirty]=useState({
     name:false,
     surname:false,
     email:false,
   });
-  const[errors,SetErrors]=useState({})
+  const[errors, SetErrors]=useState({})
 
   useEffect(() => {
-   SetErrors(validate(user))
+    SetErrors(validate(user))
 
   }, [user]);
 
   function onInputChange(e) {
-  
+
     changeUser({
       [e.target.name]: e.target.value,
     });
-  
+
     setIsDirty({...isDirty,
       [e.target.name]: true,});
   }
@@ -44,11 +44,11 @@ const newErrors={}
     newErrors.surname = 'Surname is required';
   }
   if (target.email === '') {
-     newErrors.email = 'Email is required';
+    newErrors.email = 'Email is required';
   }
   if (!EMAIL_REGEXP.test(target.email)) {
     newErrors.email = 'Email is Invalid';
- }
+  }
   return newErrors;
 }
 
@@ -71,11 +71,13 @@ function isValid(){
       fullWidth
       value={user.name}
       onChange={onInputChange} />
-    {isDirty.name&&errors.name?(
+
+      {isDirty.name && errors.name ? (
       <Box variant="h6" color="red">
         {errors.name}
       </Box >
-    ):null}
+      ) : null}
+
     <TextField
       sx={{ marginTop: '8px' }}
       name="surname"
@@ -84,11 +86,13 @@ function isValid(){
       fullWidth
       value={user.surname}
       onChange={onInputChange} />
-       {isDirty.surname&&errors.surname?(
-     <Box variant="h6" color="red">
+
+      {isDirty.surname && errors.surname ? (
+      <Box variant="h6" color="red">
         {errors.surname}
       </Box >
-    ):null}
+      ) : null}
+
     <TextField
       sx={{ marginTop: '8px' }}
       name="email"
@@ -97,11 +101,13 @@ function isValid(){
       fullWidth
       value={user.email}
       onChange={onInputChange} />
-         {isDirty.email&&errors.email?(
+
+      {isDirty.email&&errors.email?(
     <Box variant="h6" color="red">
         {errors.email}
     </Box>
-    ):null}
+      ) : null}
+
     <Button
       disabled={!isValid()}
       sx={{ marginTop: '8px' }}
