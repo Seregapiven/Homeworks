@@ -1,4 +1,4 @@
-import { Button, Paper, TextField, Box } from '@mui/material';
+import { Button, Paper, TextField} from '@mui/material';
 import {useState,useEffect} from 'react';
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import useUser from '../hooks/useUser';
@@ -64,21 +64,18 @@ function isValid(){
 
   return <Paper sx={{ marginTop: '20px' }}>
     <form onSubmit={onFormSubmit}>
-    <TextField
+      <TextField
+        error={!!errors.name}
+        helperText={errors.name}
       name="name"
       label="Name"
       variant="outlined"
       fullWidth
       value={user.name}
       onChange={onInputChange} />
-
-      {isDirty.name && errors.name ? (
-      <Box variant="h6" color="red">
-        {errors.name}
-      </Box >
-      ) : null}
-
-    <TextField
+      <TextField
+        error={!!errors.surname}
+        helperText={errors.surname}
       sx={{ marginTop: '8px' }}
       name="surname"
       label="Surname"
@@ -86,14 +83,9 @@ function isValid(){
       fullWidth
       value={user.surname}
       onChange={onInputChange} />
-
-      {isDirty.surname && errors.surname ? (
-      <Box variant="h6" color="red">
-        {errors.surname}
-      </Box >
-      ) : null}
-
-    <TextField
+      <TextField
+        error={!!errors.email}
+        helperText={errors.email}
       sx={{ marginTop: '8px' }}
       name="email"
       label="Email"
@@ -101,13 +93,6 @@ function isValid(){
       fullWidth
       value={user.email}
       onChange={onInputChange} />
-
-      {isDirty.email&&errors.email?(
-    <Box variant="h6" color="red">
-        {errors.email}
-    </Box>
-      ) : null}
-
     <Button
       disabled={!isValid()}
       sx={{ marginTop: '8px' }}
