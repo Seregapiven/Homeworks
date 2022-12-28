@@ -8,7 +8,7 @@ import useUsersList from '../hooks/useUsersList';
 
 function UsersList() {
 
-  const { list, deleteUser, loading } = useUsersList();
+  const { list, deleteUser, isloading } = useUsersList();
 
   const columns = [
     {
@@ -55,7 +55,7 @@ function UsersList() {
   ];
   return (
     <DataGrid
-      loading={loading}
+      loading={isloading}
       sx={{minHeight: '500px'}}
       rows={list}
       columns={columns}

@@ -3,7 +3,7 @@ import api from "../../../api";
 
 export default function useUsersList () {
   const [list, setList] = useState([]);
-  const [loading, setLoading] = useState(false)
+  const [isloading, setLoading] = useState(false)
 
   useEffect(() => {
     setLoading(true)
@@ -16,5 +16,5 @@ export default function useUsersList () {
       setList(list.filter((item) => item.id !== id));
     }).finally(()=> setLoading(false));
   }
-  return { list, deleteUser, loading };
+  return { list, deleteUser, isloading };
 }
