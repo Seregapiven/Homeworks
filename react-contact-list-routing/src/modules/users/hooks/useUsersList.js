@@ -3,18 +3,18 @@ import api from "../../../api";
 
 export default function useUsersList () {
   const [list, setList] = useState([]);
-  const [isloading, setLoading] = useState(false)
+  const [isloading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    setLoading(true)
-    api.get('users').then(({ data }) => setList(data)).finally(()=> setLoading(false))
+    setIsLoading(true)
+    api.get('users').then(({ data }) => setList(data)).finally(()=> setIsLoading(false))
   }, []);
 
   function deleteUser(id) {
-    setLoading(true)
+    setIsLoading(true)
     api.delete('users/' + id).then(() => {
       setList(list.filter((item) => item.id !== id));
-    }).finally(()=> setLoading(false));
+    }).finally(()=> setIsLoading(false));
   }
   return { list, deleteUser, isloading };
 }

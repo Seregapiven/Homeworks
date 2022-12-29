@@ -1,100 +1,112 @@
-import { Button, Paper, TextField} from '@mui/material';
-import {useState,useEffect} from 'react';
+import { Button, Paper, TextField } from '@mui/material';
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
 import useUser from '../hooks/useUser';
 import SaveAsOutlinedIcon from '@mui/icons-material/SaveAsOutlined';
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
-// eslint-disable-next-line
-const EMAIL_REGEXP=/(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
 
+const EMAIL_REGEXP =
+    /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
 function UserForm() {
 
   const { id } = useParams();
   const navigate = useNavigate();
-  const {user, changeUser, saveUser } = useUser(id);
-  const [isDirty, setIsDirty] = useState({
-    name:false,
-    surname:false,
-    email:false,
-  });
-  const[errors, SetErrors] = useState({})
+  const { user, saveUser } = useUser(id);
+
+  const [values, setValues] = useState(user);
+  const [errors, setErrors] = useState({});
+  const [touched, setTouched] = useState({});
+  const [isValid, setIsValid] = useState(true);
 
   useEffect(() => {
-    SetErrors(validate(user))
-
+    setValues(user);
+    validate(user);
+      setTouched({});
   }, [user]);
+
 
   function onInputChange(e) {
 
-    changeUser({
-      [e.target.name]: e.target.value,
-    });
+    const newValues = { ...values, [e.target.name]: e.target.value };
 
-    setIsDirty({...isDirty,
-      [e.target.name]: true,});
+    setValues(newValues);
+
+    validate(newValues);
   }
 
-function validate(values){
-const erors={}
-  if (values.name === '') {
-    erors.name = 'Name is required';
+  function onInputBlur(e) {
+    setTouched({ ...touched, [e.target.name]: true });
   }
-  if (values.surname === '') {
-    erors.surname = 'Surname is required';
+
+  function validate(values){
+  const errors = {};
+
+  if (!values.name) {
+    errors.name = 'Name is required';
   }
-  if (values.email === '') {
-    erors.email = 'Email is required';
+  if (!values.surname) {
+    errors.surname = 'Surname is required';
   }
-  if (!EMAIL_REGEXP.test(values.email)) {
-    erors.email = 'Email is Invalid';
+
+  if (!values.email.toLowerCase().match(EMAIL_REGEXP)) {
+    errors.email = 'Email is Invalid';
   }
-  return erors;
+
+  if (!values.email) {
+    errors.email = 'Email is required';
+    }
+
+  setIsValid(!Object.keys(errors).length);
+  setErrors(errors);
 }
 
-function isValid(){
-  return!Object.keys(errors).length;
-}
 
   function onFormSubmit(e) {
     e.preventDefault();
 
-    saveUser(user).then(() => navigate('..'))
+    saveUser(values).then(() => navigate('..'))
   }
 
   return <Paper sx={{ marginTop: '20px' }}>
     <form onSubmit={onFormSubmit}>
       <TextField
-        error={!!errors.name}
-        helperText={errors.name}
+        error={touched.name && !!errors.name}
+        helperText={touched.name ? errors.name: null}
         name="name"
         label="Name"
         variant="outlined"
         fullWidth
-        value={user.name}
-        onChange={onInputChange} />
+        value={values.name}
+        onChange={onInputChange}
+        onBlur={onInputBlur}
+      />
       <TextField
-        error={!!errors.surname}
-        helperText={errors.surname}
+        error={touched.surname && !!errors.surname}
+        helperText={touched.surname ? errors.surname: null}
         sx={{ marginTop: '8px' }}
         name="surname"
         label="Surname"
         variant="outlined"
         fullWidth
-        value={user.surname}
-        onChange={onInputChange} />
+        value={values.surname}
+        onChange={onInputChange}
+        onBlur={onInputBlur}
+      />
       <TextField
-        error={!!errors.email}
-        helperText={errors.email}
+        error={touched.email && !!errors.email}
+        helperText={touched.email ? errors.email: null}
         sx={{ marginTop: '8px' }}
         name="email"
         label="Email"
         variant="outlined"
         fullWidth
-        value={user.email}
-        onChange={onInputChange} />
+        value={values.email}
+        onChange={onInputChange}
+        onBlur={onInputBlur}
+      />
     <Button
-      disabled={!isValid()}
+      disabled={!isValid}
       sx={{ marginTop: '8px' }}
       type="submit"
       color="primary"
