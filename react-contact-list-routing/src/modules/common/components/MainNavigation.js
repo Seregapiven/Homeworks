@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppBar, Box, Button, Toolbar, Typography } from '@mui/material';
+import { AppBar, Button, Toolbar} from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import ContactMailOutlinedIcon from '@mui/icons-material/ContactMailOutlined';
