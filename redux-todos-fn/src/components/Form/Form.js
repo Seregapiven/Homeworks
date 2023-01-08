@@ -8,7 +8,7 @@ function Form() {
       function onFormSubmit(e) {
         e.preventDefault();
         dispatch(addNewTodo({
-          title: e.target.todo.value,
+          title: e.target.title.value,
         }));
           e.target.reset();
       }
@@ -17,7 +17,7 @@ function Form() {
           <form onSubmit={onFormSubmit}>
               <div className="row">
                   <div className="ten columns">
-                      <input type="text" name="todo" className="u-full-width" />
+                      <input type="text" name="title" className="u-full-width" />
                   </div>
                   <div className="two columns">
                       <input type="submit" id="submitBtn" value="Add" />
