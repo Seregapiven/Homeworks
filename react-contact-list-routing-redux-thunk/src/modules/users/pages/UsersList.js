@@ -4,11 +4,15 @@ import { DataGrid } from '@mui/x-data-grid';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Box, IconButton } from '@mui/material';
-import useUsersList from '../hooks/useUsersList';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectList, selectIsLoading } from '../../../store/selectors/users'
+import { deleteUser } from '../../../store/actions/users';
+
 
 function UsersList() {
-
-  const { list, deleteUser, isloading } = useUsersList();
+  const dispatch = useDispatch();
+  const usersList = useSelector(selectList);
+  const isLoading = useSelector(selectIsLoading);
 
   const columns = [
     {
@@ -43,7 +47,7 @@ function UsersList() {
             </IconButton>
             <IconButton
               onClick={() => {
-                deleteUser(params.id)
+                dispatch(deleteUser(params.id));
               }}
             >
               <DeleteIcon />
@@ -55,9 +59,9 @@ function UsersList() {
   ];
   return (
     <DataGrid
-      loading={isloading}
+      loading={isLoading}
       sx={{minHeight: '500px'}}
-      rows={list}
+      rows={usersList}
       columns={columns}
       pageSize={5}
       rowsPerPageOptions={[5]}

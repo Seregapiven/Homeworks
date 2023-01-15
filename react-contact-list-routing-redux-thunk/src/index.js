@@ -11,11 +11,19 @@ import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from '@mui/system';
 import theme from './theme';
 
+import { Provider } from 'react-redux';
+import store from './store';
+import { getUsers } from './store/actions/users';
+
+store.dispatch(getUsers());
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <BrowserRouter>
         <ThemeProvider theme={theme}>
+            <Provider store={store}>
             <App />
+            </Provider>
         </ThemeProvider>
     </BrowserRouter>
 

@@ -2,7 +2,6 @@ import { Button, Paper,} from '@mui/material';
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import React from 'react';
 import useUser from '../hooks/useUser';
-// import useForm from '../../common/hooks/useForm';
 import SaveAsOutlinedIcon from '@mui/icons-material/SaveAsOutlined';
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 
@@ -40,8 +39,9 @@ function UserForm() {
   const { user, saveUser } = useUser(id);
 
   function onFormSubmit(values) {
-    saveUser(values).then(() => navigate('..'))
-  }
+        saveUser(values);
+        navigate('..');
+    }
 
   return <Paper sx={{ marginTop: '20px' }}>
     <Formik

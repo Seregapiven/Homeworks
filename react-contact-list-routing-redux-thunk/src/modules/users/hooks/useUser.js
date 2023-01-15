@@ -1,5 +1,7 @@
 import api from "../../../api";
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { addUser, updateUser} from "../../../store/actions/users";
 
 const EMPTY_USER = {
   name: '',
@@ -9,6 +11,7 @@ const EMPTY_USER = {
 
 export default function useUser(id) {
   const [user, setUser] = useState(EMPTY_USER);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (isNaN(id)) {
@@ -23,23 +26,14 @@ export default function useUser(id) {
 
   function saveUser(user) {
     if (user.id) {
-      return updateUser(user)
+      return dispatch(updateUser(user));
     } else {
-      return createUser(user)
-    }
-  }
-
-  function updateUser(user) {
-    return api.put('users/' + user.id, user);
-  }
-
-  function createUser(user) {
-    return api.post('users/', user);
-  }
+      return dispatch(addUser(user));
+    };
+  };
 
   return {
     user,
     saveUser
-
   }
 }

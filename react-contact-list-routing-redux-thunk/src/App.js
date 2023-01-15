@@ -7,15 +7,10 @@ import UsersList from './modules/users/pages/UsersList';
 import UserForm from './modules/users/pages/UserForm';
 import MainNavigation from './modules/common/components/MainNavigation';
 import Home from './modules/home/pages/Home';
-import { useEffect } from 'react';
-import api from './api';
+
 
 
 function App() {
-
-  useEffect(() => {
-    api.get('users').then(({ data }) => console.log(data));
-  }, []);
 
   return (
     <Container maxWidth="md">
