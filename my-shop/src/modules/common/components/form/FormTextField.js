@@ -6,7 +6,8 @@ function FormTextField({ name, ...restProps }) {
   const [{ value, onBlur, onChange }, {touched, error}] = useField(name);
 
   return <TextField
-    sx={{mb:1}}
+    sx={{ mb: 1 }}
+    fullWidth
     error={touched && !!error}
     helperText={touched ? error : null}
     name={name}
