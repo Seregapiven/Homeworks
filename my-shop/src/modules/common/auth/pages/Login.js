@@ -3,25 +3,37 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 import loginValidationSchema from '../validation/loginValidationSchema';
 import useAuth from '../hooks/useAuth';
-import FormTextField from '../../components/form/FormTextField';
-import SelectRole from '../../components/form/SelectRole';
+import FormTextField from '../../form/FormTextField';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { MenuItem } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import api from '../../../../api';
 
-const initialValues = { username: '', password: '', role: 'admin' };
+const initialValues = { username: '', password: ''};
 
 function Login() {
     const auth = useAuth();
 
-    function onSubmit(values) {
-        auth.login(values.username, values.password, values.role);
-    }
+    function onSubmit(values, meta) {
+        console.log('submiting', values, meta);
+        auth.login(values.username, values.password).catch((error) => {
+            if (error.response.status >= 400 && error.response.status < 500) {
+                meta.setErrors({
+                    password: error.response.data.error,
+                });
+            }
+        });
+    };
+
+    function simulateError() {
+        api.get('error', {
+            headers: {
+                Authorization: 'Bearer 123',
+            },
+        });
+    };
 
     return (
         <Formik
@@ -30,7 +42,7 @@ function Login() {
             validationSchema={loginValidationSchema}
         >
                 <Form>
-                    {auth.isAuthorized && <Navigate to="/" />}
+                    {auth.isAuthorized && <Navigate replace={true} to="/" />}
                     <Box
                         sx={{
                             marginTop: 8,
@@ -49,10 +61,6 @@ function Login() {
                             name="username"
                             label="Name" />
                         <FormTextField name="password" label="Password" />
-                        <SelectRole name="role" fullWidth label="Role" id="role">
-                            <MenuItem value="admin">Admin</MenuItem>
-                            <MenuItem value="user">User</MenuItem>
-                        </SelectRole>
                         <Button
                             type="submit"
                             fullWidth
@@ -60,7 +68,15 @@ function Login() {
                             sx={{ mt: 3, mb: 2 }}
                         >
                             Login
-                        </Button>
+                    </Button>
+                    <Button
+                        fullWidth
+                        variant="contained"
+                        sx={{ mt: 3, mb: 2 }}
+                        onClick={simulateError}
+                    >
+                        Error
+                    </Button>
 
                     </Box>
                 </Form>
